@@ -12,10 +12,16 @@ function Book(title, author, pages, haveRead) {
 
 // call function using new keyword
 
-const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'Not read yet');
+const bookOne = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'Read');
 
-book1.info();
+const bookTwo = new Book('Moby Dick', 'Herman Melville', '544 pages', 'Not yet read');
+
+const bookThree = new Book('War and Peace', 'Leo Tolstoy', '1296 pages', 'Not yet read');
+
+bookOne.info();
+bookTwo.info();
+bookThree.info();
 
 function addBookToLibrary() {
-
+  myLibrary.map();
 }

@@ -9,6 +9,33 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+  <h1>Your Library</h1>
+    <form>
+    <h2>Add a book</h2>
+    <ul>
+        <li>
+            <label for="book_title">Title</label>
+            <input type="text" id="Title" name="book_title" placeholder="Title" required />
+        </li>
+        <li>
+            <label for="author"> Author</label>
+            <input type="text" id="author" name="author" placeholder="Author" required />
+        </li>
+        <li>
+            <label for="pages">Pages</label>
+            <input type="number" id="pages" name="pages"  min="1" placeholder="Pages" required />
+        </li>
+        <li>
+            <label for="have_you_read">Have you read it?</label>
+            <input type="checkbox" id="have_you_read" name="have_you_read" required />   
+        </li>
+        <li>
+        <li class="button">
+            <label for="Submit book"></label>
+            <button id="submitButton" type="submit"> Submit</button>
+        </li>
+    </ul>
+    </form>
     
 </body>
 </html>

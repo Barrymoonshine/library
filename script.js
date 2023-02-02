@@ -17,4 +17,11 @@ function addBookToLibrary() {
   haveReadValue = document.getElementById('haveRead').value;
   let newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
   myLibrary.push(newBook);
+  displayLibrary();
+}
+
+function displayLibrary () {
+  myLibrary.forEach(function (item,index) {
+    console.log(item,index);
+  });
 }

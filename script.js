@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, haveRead) {
   this.title = title;
@@ -6,22 +6,15 @@ function Book(title, author, pages, haveRead) {
   this.pages = pages;
   this.haveRead = haveRead;
   this.info = function () {
-    return `${title} ${author} ${pages} ${haveRead}`;
+    return`${title} ${author} ${pages} ${haveRead}`;
   };
 }
 
-// call function using new keyword
-
-const bookOne = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'Read');
-
-const bookTwo = new Book('Moby Dick', 'Herman Melville', '544 pages', 'Not yet read');
-
-const bookThree = new Book('War and Peace', 'Leo Tolstoy', '1296 pages', 'Not yet read');
-
-bookOne.info();
-bookTwo.info();
-bookThree.info();
-
 function addBookToLibrary() {
-  myLibrary.map();
+  titleValue = document.getElementById('title').value;
+  authorValue = document.getElementById('author').value;
+  pagesValue = document.getElementById('pages').value;
+  haveReadValue = document.getElementById('haveRead').value;
+  let newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
+  myLibrary.push(newBook);
 }

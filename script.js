@@ -17,21 +17,25 @@ function Book(title, author, pages, haveRead) {
 }
 
 function addBookToLibrary() {
+  getFormValues();
+  let newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
+  myLibrary.push(newBook);
+  displayLibrary();
+  resetForm();
+}
+
+function getFormValues(){
   titleValue = document.getElementById('title').value;
   authorValue = document.getElementById('author').value;
   pagesValue = document.getElementById('pages').value;
   haveReadValue = document.getElementById('haveRead').value;
-  let newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
-  myLibrary.push(newBook);
-  displayLibrary();
-  resetAddBookForm();
 }
 
 function displayLibrary () {
   removeDivs();
   myLibrary.forEach(function (item) {
     let libraryBook = document.createElement('div');
-    libraryBook.className = 'myLibrary';
+    libraryBook.className = 'myLibraryCards';
     libraryBookValue = item.info();
     libraryBook.innerText = libraryBookValue
     libraryBook.style.backgroundColor = "grey";
@@ -39,7 +43,7 @@ function displayLibrary () {
   });
 }
 
-function resetAddBookForm () {
+function resetForm () {
   document.getElementById('title').value = "";
   document.getElementById('author').value = "";
   document.getElementById('pages').value = "";

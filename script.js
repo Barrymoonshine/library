@@ -1,3 +1,9 @@
+const libraryContainer = document.getElementById('libraryContainer');
+
+document.getElementById('submitButton').addEventListener("click", (e) => {
+  addBookToLibrary();
+});
+
 let myLibrary = [];
 
 function Book(title, author, pages, haveRead) {
@@ -22,13 +28,14 @@ function addBookToLibrary() {
 }
 
 function displayLibrary () {
+  removeDivs();
   myLibrary.forEach(function (item) {
     let libraryBook = document.createElement('div');
     libraryBook.className = 'myLibrary';
     libraryBookValue = item.info();
     libraryBook.innerText = libraryBookValue
     libraryBook.style.backgroundColor = "grey";
-    document.getElementById('libraryContainer').appendChild(libraryBook);
+    libraryContainer.appendChild(libraryBook);
   });
 }
 
@@ -39,6 +46,8 @@ function resetAddBookForm () {
   document.getElementById('haveRead').checked = false;
 }
 
-document.getElementById('submitButton').addEventListener("click", (e) => {
-  addBookToLibrary();
-});
+function removeDivs() {
+  while (libraryContainer.lastElementChild) {
+    libraryContainer.removeChild(libraryContainer.lastElementChild);
+  }
+}

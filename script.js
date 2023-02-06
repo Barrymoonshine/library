@@ -1,10 +1,26 @@
 const libraryContainer = document.getElementById('libraryContainer');
+const modal = document.getElementById('newBookModal');
+const modalButton = document.getElementById('modalButton');
+const span = document.getElementsByClassName("close")[0];
+const submitButton = document.getElementById('submitButton');
+let myLibrary = [];
 
-document.getElementById('submitButton').addEventListener("click", (e) => {
+submitButton.addEventListener("click", () => {
   addBookToLibrary();
 });
+modalButton.addEventListener("click", () => {
+  modal.style.display ="block";
+});
+span.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
-let myLibrary = [];
+// When the user clicks anywhere outside of the modal, close it 
+window.onclick= function (e) {
+  if(e.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 function Book(title, author, pages, haveRead) {
   this.title = title;
@@ -28,7 +44,7 @@ function getFormValues(){
   titleValue = document.getElementById('title').value;
   authorValue = document.getElementById('author').value;
   pagesValue = document.getElementById('pages').value;
-  haveReadValue = document.getElementById('haveRead').value;
+  haveReadValue = document.getElementById('haveRead').checked;
 }
 
 function displayLibrary () {
@@ -47,10 +63,7 @@ function displayLibrary () {
     libraryBookHaveRead.innerText = "Read: " +libraryBookValue[3]
     libraryBook.style.backgroundColor = "grey";
     libraryContainer.appendChild(libraryBook);
-    libraryBook.appendChild(libraryBookTitle);
-    libraryBook.appendChild(libraryBookAuthor);
-    libraryBook.appendChild(libraryBookPages);
-    libraryBook.appendChild(libraryBookHaveRead);
+    libraryBook.append(libraryBookTitle,libraryBookAuthor,libraryBookPages,libraryBookHaveRead);
   });
 }
 

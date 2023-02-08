@@ -48,21 +48,30 @@ function getFormValues(){
 function displayLibrary () {
   removeDivs();
   removeModal();
-  myLibrary.forEach(function (item) {
+  myLibrary.forEach(function (item, index) {
     let libraryBook = document.createElement('div');
+    let removeBook = document.createElement('button');
     let libraryBookTitle = document.createElement('div');
     let libraryBookAuthor = document.createElement('div');
     let libraryBookPages = document.createElement('div');
     let libraryBookHaveRead = document.createElement('div');
     libraryBook.className = 'myLibraryCards';
+    libraryBook.id = index;
     libraryBookValue = item.info();
+    removeBook.innerText = "Remove book"
+    removeBook.id = index;
     libraryBookTitle.innerText = "Title: " +libraryBookValue[0]
     libraryBookAuthor.innerText = "Author: " +libraryBookValue[1]
     libraryBookPages.innerText = "Number of pages: " +libraryBookValue[2]
     libraryBookHaveRead.innerText = "Read: " +libraryBookValue[3]
     libraryBook.style.backgroundColor = "grey";
     libraryContainer.appendChild(libraryBook);
-    libraryBook.append(libraryBookTitle,libraryBookAuthor,libraryBookPages,libraryBookHaveRead);
+    libraryBook.append(libraryBookTitle,libraryBookAuthor,libraryBookPages,libraryBookHaveRead, removeBook);
+    removeBook.addEventListener("click", (e) => {
+      const element = document.getElementById(e.target.id)
+      element.remove();
+      delete myLibrary[e.target.id];
+    })
   });
 }
 

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body id="body">
+
   <div class="header">
     <h1>My Library</h1>
   </div>
@@ -17,26 +18,26 @@
   <div class="bookForm">
     <button id="modalButton">+ Add book</button>
     </div>
-
+    
     <!--The Modal-->
     <div id="newBookModal" class="modal">
 
     <!--Modal content-->
     <div class="modal-content">
-    <span class="close">&times;</span>;
+    <span class="close">&times;</span>
     <form id="newBookForm">
     <h2>Add a book</h2>
     <ul>
         <li>
-            <label for="book_title">Title</label>
+            <label for="book_title"></label>
             <input type="text" id="title" name="book_title" placeholder="Title" required />
         </li>
         <li>
-            <label for="author"> Author</label>
+            <label for="author"> </label>
             <input type="text" id="author" name="author" placeholder="Author" required />
         </li>
         <li>
-            <label for="pages">Pages</label>
+            <label for="pages"></label>
             <input type="number" id="pages" name="pages"  min="1" placeholder="Pages" required />
         </li>
         <li>
@@ -51,6 +52,7 @@
     </ul>
     </form>
   </div>
+</div>
 </div>
 
   <div id="libraryContainer"></div>

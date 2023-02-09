@@ -30,11 +30,11 @@
     <ul>
         <li>
             <label for="book_title"></label>
-            <input type="text" id="title" name="book_title" placeholder="Title" required />
+            <input type="text" id="title" name="book_title" placeholder="Title" minlength="1" required />
         </li>
         <li>
             <label for="author"> </label>
-            <input type="text" id="author" name="author" placeholder="Author" required />
+            <input type="text" id="author" name="author" placeholder="Author" minlength="1" required />
         </li>
         <li>
             <label for="pages"></label>
@@ -46,7 +46,7 @@
         </li>
         <li class="button">
             <label for="Submit book to library"></label>
-            <button id="submitButton" type="button"> Submit</button>
+            <button id="submitButton" type="submit"> Submit</button>
         </li>
     </ul>
     </form>

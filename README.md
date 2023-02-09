@@ -18,3 +18,7 @@ Bugs to fix
 - haveRead 
 - input with empty fields 
 - go back to submit button to get field validation?
+
+Firstly thanks so much for looking at my code and the pointer on this, I think I've fixed this but not entirely sure why it's worked!
+I've updated the my createLibraryCard function to use the myLibrary object to populate the card rather than the .info object method. My theory is this has worked as the myLibrary object has the edited book read status, whereas the .info method was returning the original status provided by the user (as an array). Sorry one more question, but if my theory is right - do you know why this is the case? As I'm confused why my object method was storing the originally provided read status as I dont think I am storing this in a variable? 
+Maybe I'm not understanding how the 'this' keyword works?

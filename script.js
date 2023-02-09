@@ -6,8 +6,9 @@ const submitButton = document.getElementById('submitButton');
 const body = document.getElementById('body');
 let myLibrary = [];
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (event) => {
   addBookToLibrary();
+  event.preventDefault();
 });
 modalButton.addEventListener("click", () => {
   modal.style.display ="block";
@@ -67,7 +68,7 @@ function createLibraryCard () {
     libraryBookAuthor.innerText = "Author: " +libraryBookValue.author;
     libraryBookPages.innerText = "Number of pages: " +libraryBookValue.pages;
     if (libraryBookValue.haveRead == true) {
-      haveReadButton.style.backgroundColor = 'green';
+      haveReadButton.style.backgroundColor = 'rgb(134, 228, 134';
       haveReadButton.innerText = 'Read';
     } else if (libraryBookValue.haveRead == false) {
       haveReadButton.style.backgroundColor = 'red';
@@ -88,7 +89,7 @@ function createLibraryCard () {
         haveReadButton.innerText = 'Not read';
         myLibrary[myLibraryArrayIndex].haveRead = false;
       } else if (haveReadButtonValue == 'Not read') {
-        haveReadButton.style.backgroundColor = 'green';
+        haveReadButton.style.backgroundColor = 'rgb(134, 228, 134';
       haveReadButton.innerText = 'Read';
       myLibrary[myLibraryArrayIndex].haveRead = true;
       }

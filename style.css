@@ -87,6 +87,7 @@ input {
 .haveYouReadText {
     font-size: 17px;
     font-weight: bold;
+    padding-bottom: 0px;
 }
 
 #haveRead {
@@ -101,6 +102,7 @@ input {
     font-size:17px;
     border:none;
     border-radius: 5px;
+    flex:1;
 }
 
 .myLibraryCards {

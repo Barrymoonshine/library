@@ -59,21 +59,20 @@ function createLibraryCard () {
     let libraryBookPages = document.createElement('div');
     libraryBook.className = 'myLibraryCards';
     libraryBook.id = index;
-    libraryBookValue = item.info();
+    libraryBookValue = item;
     removeBookButton.innerText = "Remove book"
     removeBookButton.id = index;
     haveReadButton.id = `haveRead${index}`;
-    libraryBookTitle.innerText = "Title: " +libraryBookValue[0]
-    libraryBookAuthor.innerText = "Author: " +libraryBookValue[1]
-    libraryBookPages.innerText = "Number of pages: " +libraryBookValue[2]
-    if (libraryBookValue[3] == true) {
+    libraryBookTitle.innerText = "Title: " +libraryBookValue.title;
+    libraryBookAuthor.innerText = "Author: " +libraryBookValue.author;
+    libraryBookPages.innerText = "Number of pages: " +libraryBookValue.pages;
+    if (libraryBookValue.haveRead == true) {
       haveReadButton.style.backgroundColor = 'green';
       haveReadButton.innerText = 'Read';
-    } else if (libraryBookValue[3] == false) {
+    } else if (libraryBookValue.haveRead == false) {
       haveReadButton.style.backgroundColor = 'red';
       haveReadButton.innerText = 'Not read';
     }
-    libraryBook.style.backgroundColor = "grey";
     libraryContainer.appendChild(libraryBook);
     libraryBook.append(libraryBookTitle,libraryBookAuthor,libraryBookPages,haveReadButton, removeBookButton);
     removeBookButton.addEventListener("click", (e) => {
@@ -101,7 +100,7 @@ function resetForm () {
   document.getElementById('title').value = "";
   document.getElementById('author').value = "";
   document.getElementById('pages').value = "";
-  
+  document.getElementById('haveRead').checked = null;
 }
 
 function removeDivs() {

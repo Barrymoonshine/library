@@ -46,6 +46,10 @@ function getFormValues(){
 function displayLibrary () {
   removeDivs();
   hideModal();
+  createLibraryCard();
+}
+
+function createLibraryCard () {
   myLibrary.forEach(function (item, index) {
     let libraryBook = document.createElement('div');
     let removeBookButton = document.createElement('button');
@@ -79,24 +83,25 @@ function displayLibrary () {
     }) ;
     haveReadButton.addEventListener("click", (e) => {
       const haveReadButtonValue = document.getElementById(e.target.id).textContent;
+      let myLibraryArrayIndex = e.target.id.replace('haveRead','');
       if (haveReadButtonValue == 'Read') {
         haveReadButton.style.backgroundColor = 'red';
         haveReadButton.innerText = 'Not read';
+        myLibrary[myLibraryArrayIndex].haveRead = false;
       } else if (haveReadButtonValue == 'Not read') {
         haveReadButton.style.backgroundColor = 'green';
       haveReadButton.innerText = 'Read';
+      myLibrary[myLibraryArrayIndex].haveRead = true;
       }
   });
 })
 }
 
-
-
 function resetForm () {
   document.getElementById('title').value = "";
   document.getElementById('author').value = "";
   document.getElementById('pages').value = "";
-  document.getElementById('haveRead').checked = false;
+  
 }
 
 function removeDivs() {

@@ -11,7 +11,7 @@
 <body id="body">
 
   <div class="header">
-    <h1>My Library</h1>
+    My Library
   </div>
 
   <!--Trigger/Open the new book Modal-->
@@ -26,7 +26,7 @@
     <div class="modal-content">
     <span class="close">&times;</span>
     <form id="newBookForm">
-    <h2>Add a book</h2>
+    <h2 class="formTitle">Add a book</h2>
     <ul>
         <li>
             <label for="book_title"></label>
@@ -41,8 +41,8 @@
             <input type="number" id="pages" name="pages"  min="1" placeholder="Pages" required />
         </li>
         <li>
-            <label for="have_you_read">Have you read it?</label>
-            <input type="checkbox" id="haveRead" name="have_you_read" required />   
+            <label for="have_you_read"></label>
+            <p class="haveYouReadText">Have you read it? <input type="checkbox" id="haveRead" name="have_you_read" required /></p> 
         </li>
         <li>
         <li class="button">

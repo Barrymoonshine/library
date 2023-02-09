@@ -18,8 +18,6 @@ span.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-
-
 function Book(title, author, pages, haveRead) {
   this.title = title;
   this.author = author;
@@ -47,33 +45,52 @@ function getFormValues(){
 
 function displayLibrary () {
   removeDivs();
-  removeModal();
+  hideModal();
   myLibrary.forEach(function (item, index) {
     let libraryBook = document.createElement('div');
-    let removeBook = document.createElement('button');
+    let removeBookButton = document.createElement('button');
+    let haveReadButton = document.createElement('button');
     let libraryBookTitle = document.createElement('div');
     let libraryBookAuthor = document.createElement('div');
     let libraryBookPages = document.createElement('div');
-    let libraryBookHaveRead = document.createElement('div');
     libraryBook.className = 'myLibraryCards';
     libraryBook.id = index;
     libraryBookValue = item.info();
-    removeBook.innerText = "Remove book"
-    removeBook.id = index;
+    removeBookButton.innerText = "Remove book"
+    removeBookButton.id = index;
+    haveReadButton.id = `haveRead${index}`;
     libraryBookTitle.innerText = "Title: " +libraryBookValue[0]
     libraryBookAuthor.innerText = "Author: " +libraryBookValue[1]
     libraryBookPages.innerText = "Number of pages: " +libraryBookValue[2]
-    libraryBookHaveRead.innerText = "Read: " +libraryBookValue[3]
+    if (libraryBookValue[3] == true) {
+      haveReadButton.style.backgroundColor = 'green';
+      haveReadButton.innerText = 'Read';
+    } else if (libraryBookValue[3] == false) {
+      haveReadButton.style.backgroundColor = 'red';
+      haveReadButton.innerText = 'Not read';
+    }
     libraryBook.style.backgroundColor = "grey";
     libraryContainer.appendChild(libraryBook);
-    libraryBook.append(libraryBookTitle,libraryBookAuthor,libraryBookPages,libraryBookHaveRead, removeBook);
-    removeBook.addEventListener("click", (e) => {
+    libraryBook.append(libraryBookTitle,libraryBookAuthor,libraryBookPages,haveReadButton, removeBookButton);
+    removeBookButton.addEventListener("click", (e) => {
       const element = document.getElementById(e.target.id)
       element.remove();
       delete myLibrary[e.target.id];
-    })
+    }) ;
+    haveReadButton.addEventListener("click", (e) => {
+      const haveReadButtonValue = document.getElementById(e.target.id).textContent;
+      if (haveReadButtonValue == 'Read') {
+        haveReadButton.style.backgroundColor = 'red';
+        haveReadButton.innerText = 'Not read';
+      } else if (haveReadButtonValue == 'Not read') {
+        haveReadButton.style.backgroundColor = 'green';
+      haveReadButton.innerText = 'Read';
+      }
   });
+})
 }
+
+
 
 function resetForm () {
   document.getElementById('title').value = "";
@@ -88,6 +105,6 @@ function removeDivs() {
   }
 }
 
-function removeModal () {
+function hideModal () {
   modal.style.display = "none";
 }

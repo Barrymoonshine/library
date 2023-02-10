@@ -17,12 +17,13 @@ ul {
 }
 
 .header{
-    font-size: 30px;
+    font-size: 40px;
+    color: white;
     font-weight: bolder;
     padding: 40px 20px 40px 20px;
     text-align: center;
-    background: hsla(0, 0%, 84%, 1);
-    background: linear-gradient(90deg, hsla(0, 0%, 84%, 1) 0%, hsla(0, 0%, 100%, 1) 100%);
+    background: hsla(180, 74%, 47%, 1);
+    background: linear-gradient(90deg, hsla(180, 74%, 47%, 1) 0%, hsla(230, 67%, 76%, 1) 100%);
     box-shadow: 0 4px 2px -2px gray;
 }
 

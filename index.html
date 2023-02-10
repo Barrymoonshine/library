@@ -25,7 +25,7 @@
     <!--Modal content-->
     <div class="modal-content">
     <span class="close">&times;</span>
-    <form id="newBookForm">
+    <form id="newBookForm" onsubmit="addBookToLibrary(event)">
     <h2 class="formTitle">Add a book</h2>
     <ul>
         <li>
@@ -42,7 +42,7 @@
         </li>
         <li>
             <label for="have_you_read"></label>
-            <p class="haveYouReadText">Have you read it? <input type="checkbox" id="haveRead" name="have_you_read" required /></p> 
+            <p class="haveYouReadText">Have you read it? <input type="checkbox" id="haveRead" name="have_you_read" /></p> 
         </li>
         <li class="button">
             <label for="Submit book to library"></label>

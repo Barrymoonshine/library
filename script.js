@@ -6,10 +6,10 @@ const submitButton = document.getElementById('submitButton');
 const body = document.getElementById('body');
 let myLibrary = [];
 
-submitButton.addEventListener("click", (event) => {
-  addBookToLibrary();
-  event.preventDefault();
-});
+// submitButton.addEventListener("click", (event) => {
+//   addBookToLibrary();
+//   event.preventDefault();
+// });
 modalButton.addEventListener("click", () => {
   modal.style.display ="block";
   body.style.backgroundColor = "rgba (0,0,0,0.4)";
@@ -29,12 +29,13 @@ function Book(title, author, pages, haveRead) {
   };
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(event) {
   getFormValues();
   let newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
   myLibrary.push(newBook);
   displayLibrary();
   resetForm();
+  event.preventDefault();
 }
 
 function getFormValues(){

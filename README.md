@@ -12,6 +12,7 @@ Learnings
 - Objects can't be added to the page using DOM methods 
 - Data attributes
 - HaveRead status not staying when updated and new cards added 
+- using window. to declare global variables, problem with function addlibrary card doing too much
 
 Bugs to fix 
 

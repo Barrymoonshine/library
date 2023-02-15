@@ -3,8 +3,12 @@
 }
 
 :root {
+    --main-background-color: rgb(248, 248, 248);
     --title-card-background: hsla(180, 74%, 47%, 1);
     --title-card-background-gradient:linear-gradient(90deg, hsla(180, 74%, 47%, 1) 0%, hsla(230, 67%, 76%, 1) 100%);
+    --library-red: rgb(214, 27, 27);
+    --library-green: rgb(134, 228, 134);
+    --library-green-hover: rgb(113, 201, 113);
     --box-radius: 20px;
     --button-radius: 10px;
     --box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -15,7 +19,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     grid-template-rows: 100px 1fr 7fr 1fr;
-    background-color: rgb(248, 248, 248);
+    background-color: var(--main-background-color);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center; 
 }
@@ -26,7 +30,7 @@ ul {
 
 .header{
     font-size: 40px;
-    color: white;
+    color: var(--main-background-color);
     font-weight: bolder;
     padding: 40px 20px 40px 20px;
     background: var(--title-card-background);
@@ -82,7 +86,7 @@ ul {
 }
 
 input {
-    background-color: white;
+    background-color: var(--main-background-color);
     font-weight: bold;
     font-size: 17px;
     padding: 10px 5px 10px 5px;
@@ -101,7 +105,7 @@ input {
   
 .close:hover,
 .close:focus {
-    color: red;
+    color: var(--library-red);
     text-decoration: none;
     cursor: pointer;
 }
@@ -129,7 +133,7 @@ input {
 }
 
 #submitButton {
-    background-color: rgb(134, 228, 134);
+    background-color: var(--library-green);
     padding: 20px 40px 20px 40px;
     font-size:17px;
     font-weight:bold;
@@ -139,8 +143,8 @@ input {
 }
 
 #submitButton:hover {    
-    background-color: rgb(113, 201, 113);
-    cursor:pointer;
+    background-color: var(--library-green-hover);
+    cursor: pointer;
 }
 
 

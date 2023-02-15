@@ -49,7 +49,7 @@ function haveReadButtonEventListener(haveReadButton) {
     const haveReadButtonValue = document.getElementById(e.target.id).textContent;
     const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
     if (haveReadButtonValue == 'Read') {
-      haveReadButton.style.backgroundColor = 'red';
+      haveReadButton.style.backgroundColor = 'rgb(214, 27, 27)';
       haveReadButton.innerText = 'Not read';
       myLibrary[myLibraryArrayIndex].haveRead = false;
     } else if (haveReadButtonValue == 'Not read') {
@@ -84,7 +84,7 @@ function createLibraryCard() {
       haveReadButton.style.backgroundColor = 'rgb(134, 228, 134';
       haveReadButton.innerText = 'Read';
     } else if (libraryBookValue.haveRead == false) {
-      haveReadButton.style.backgroundColor = 'red';
+      haveReadButton.style.backgroundColor = 'rgb(214, 27, 27)';
       haveReadButton.innerText = 'Not read';
     }
 

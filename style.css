@@ -82,7 +82,7 @@ ul {
     border-radius: var(--box-radius);
     background-color: rgb(229, 226, 226); 
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    padding: 30px 60px 50px 60px;
+    padding: 30px 45px 50px 45px;
 }
 
 input {

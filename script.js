@@ -48,14 +48,17 @@ function hideModal() {
 
 function removeButtonEventListener(removeBookButton) {
   removeBookButton.addEventListener('click', (e) => {
+    // Removes targeted book
     const element = document.getElementById(e.target.id);
-    element.remove();
-    delete myLibrary[e.target.id];
+    const index = element.id;
+    myLibrary.splice(index, 1);
+    displayLibrary();
   });
 }
 
 function haveReadButtonEventListener(haveReadButton) {
   haveReadButton.addEventListener('click', (e) => {
+    // Changes have read status of targeted book
     const haveReadButtonValue = document.getElementById(e.target.id).textContent;
     const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
     if (haveReadButtonValue == 'Read') {
@@ -74,9 +77,6 @@ function createLibraryCard() {
   myLibrary.forEach((item, index) => {
     // Create elements to append onto the library card
     const libraryBook = document.createElement('div');
-    const libraryBookTitle = document.createElement('div');
-    const libraryBookAuthor = document.createElement('div');
-    const libraryBookPages = document.createElement('div');
     const removeBookButton = document.createElement('button');
     const haveReadButton = document.createElement('button');
     libraryBook.className = 'my-library-cards';
@@ -85,21 +85,19 @@ function createLibraryCard() {
     haveReadButton.id = `haveRead${index}`;
 
     // Create content for the elements
-    const libraryBookValue = item;
-    libraryBookTitle.innerText = `Title: ${libraryBookValue.title}`;
-    libraryBookAuthor.innerText = `Author: ${libraryBookValue.author}`;
-    libraryBookPages.innerText = `Number of pages: ${libraryBookValue.pages}`;
+    libraryBook.innerText = `Title: ${item.title} \n 
+    Author: ${item.author} \n
+    Number of pages: ${item.pages}`;
     removeBookButton.innerText = 'Remove book';
-    if (libraryBookValue.haveRead == true) {
+    if (item.haveRead === true) {
       haveReadButton.style.backgroundColor = '#4ade80';
       haveReadButton.innerText = 'Read';
-    } else if (libraryBookValue.haveRead == false) {
+    } else if (item.haveRead === false) {
       haveReadButton.style.backgroundColor = '#f87171';
       haveReadButton.innerText = 'Not read';
     }
 
     // Append elements
-    libraryBook.append(libraryBookTitle, libraryBookAuthor, libraryBookPages);
     libraryBook.append(haveReadButton, removeBookButton);
     libraryContainer.appendChild(libraryBook);
 

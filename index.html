@@ -9,46 +9,42 @@
     <script src="script.js" defer></script>
 </head>
 <body id="body">
-
   <div class="header">
     My Library
   </div>
-
   <!--Trigger/Open the new book Modal-->
   <div class="addBookButton">
     <button id="modalButton">+ Add book</button>
   </div>
-    
   <!--The Modal-->
   <div id="newBookModal" class="modal">
-
   <!--Modal content-->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <form id="newBookForm" onsubmit="addBookToLibrary(event)">
-      <h2 class="formTitle">Add a book</h2>  
-      <ul>
-        <li>
-          <label for="book_title"></label>
-          <input type="text" id="title" name="book_title" placeholder="Title" minlength="1" required />
-        </li>
-        <li>
-          <label for="author"> </label>
-          <input type="text" id="author" name="author" placeholder="Author" minlength="1" required />
-        </li>
-        <li>
-          <label for="pages"></label>
-          <input type="number" id="pages" name="pages"  min="1" placeholder="Pages" required />
-        </li>
-        <li>
-          <label for="have_you_read"></label>
-          <p class="haveYouReadText">Have you read it? <input type="checkbox" id="haveRead" name="have_you_read" /></p> 
-        </li>
-        <li class="button">
-          <label for="Submit book to library"></label>
-          <button id="submitButton" type="submit"> Submit</button>
-        </li>
-      </ul>
+      <form id="newBookForm">
+        <h2 class="formTitle">Add a book</h2>  
+        <ul>
+          <li>
+            <label for="book_title"></label>
+            <input type="text" id="title" name="book_title" placeholder="Title" minlength="1" required />
+          </li>
+          <li>
+            <label for="author"> </label>
+            <input type="text" id="author" name="author" placeholder="Author" minlength="1" required />
+          </li>
+          <li>
+            <label for="pages"></label>
+            <input type="number" id="pages" name="pages"  min="1" placeholder="Pages" required />
+          </li>
+          <li>
+            <label for="have_you_read"></label>
+            <p class="haveYouReadText">Have you read it? <input type="checkbox" id="haveRead" name="have_you_read" /></p> 
+          </li>
+          <li class="button">
+            <label for="Submit book to library"></label>
+            <button id="submitButton" type="submit"> Submit</button>
+          </li>
+        </ul>
       </form>
     </div>
   </div>

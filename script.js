@@ -1,7 +1,8 @@
 const libraryContainer = document.getElementById('libraryContainer');
 const modal = document.getElementById('newBookModal');
 const modalButton = document.getElementById('modalButton');
-const span = document.getElementsByClassName('close')[0];
+const closeButton = document.getElementsByClassName('close')[0];
+const newBookForm = document.getElementById('newBookForm');
 const body = document.getElementById('body');
 const myLibrary = [];
 
@@ -10,7 +11,7 @@ modalButton.addEventListener('click', () => {
   modal.style.display = 'flex';
   body.style.backgroundColor = 'rgba (0,0,0,0.4)';
 });
-span.addEventListener('click', () => {
+closeButton.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 window.addEventListener('click', (e) => {
@@ -18,6 +19,15 @@ window.addEventListener('click', (e) => {
     modal.style.display = 'none';
   }
 });
+
+newBookForm.addEventListener('submit', handleForm);
+
+function handleForm(e) {
+  e.preventDefault();
+  addBookToLibrary();
+  displayLibrary();
+  resetForm();
+}
 
 function Book(title, author, pages, haveRead) {
   this.title = title;
@@ -113,14 +123,11 @@ function resetForm() {
 }
 
 // Function called when form submitted
-function addBookToLibrary(event) {
+function addBookToLibrary() {
   const titleValue = document.getElementById('title').value;
   const authorValue = document.getElementById('author').value;
   const pagesValue = document.getElementById('pages').value;
   const haveReadValue = document.getElementById('haveRead').checked;
   const newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
   myLibrary.push(newBook);
-  displayLibrary();
-  resetForm();
-  event.preventDefault();
 }

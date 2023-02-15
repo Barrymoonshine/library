@@ -7,7 +7,7 @@ const myLibrary = [];
 
 // Modal event listeners
 modalButton.addEventListener('click', () => {
-  modal.style.display = 'block';
+  modal.style.display = 'flex';
   body.style.backgroundColor = 'rgba (0,0,0,0.4)';
 });
 span.addEventListener('click', () => {

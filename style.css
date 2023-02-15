@@ -51,6 +51,9 @@ ul {
 
 .modal {
     display:none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position:fixed;
     z-index:1;
     left: 50%;
@@ -61,7 +64,7 @@ ul {
     border-radius: 20px;
     background-color: rgb(229, 226, 226); 
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    padding:60px;
+    padding: 75px 60px 75px 60px;
 }
 
 input {
@@ -72,11 +75,6 @@ input {
     border: none;
     border-radius: 5px;
     flex-grow: 1;
-}
-
-#newBookForm {
-    display: flex;
-    flex-direction: column;
 }
 
 .close {
@@ -98,7 +96,7 @@ input {
 }
 
 #newBookForm ul li {
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .haveYouReadText {

@@ -117,7 +117,7 @@ function resetForm() {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('pages').value = '';
-  document.getElementById('have-read').checked = null;
+  document.getElementById('have-read').checked = false;
 }
 
 // Function called when form submitted

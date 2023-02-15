@@ -3,12 +3,12 @@
 }
 
 :root {
-    --main-background-color: rgb(248, 248, 248);
+    --main-background-color: #f1f5f9;
     --title-card-background: hsla(180, 74%, 47%, 1);
     --title-card-background-gradient:linear-gradient(90deg, hsla(180, 74%, 47%, 1) 0%, hsla(230, 67%, 76%, 1) 100%);
-    --library-red: rgb(214, 27, 27);
-    --library-green: rgb(134, 228, 134);
-    --library-green-hover: rgb(113, 201, 113);
+    --library-red: #f87171;
+    --library-green: #4ade80;
+    --library-green-hover: #22c55e;
     --box-radius: 20px;
     --button-radius: 10px;
     --box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -35,7 +35,7 @@ ul {
     padding: 40px 20px 40px 20px;
     background: var(--title-card-background);
     background: var(--title-card-background-gradient);
-    box-shadow: 0 4px 2px -2px gray;
+    box-shadow: 0 2px 2px 0 rgb(209, 205, 205);
 }
 
 .addBookButton {
@@ -82,7 +82,7 @@ ul {
     border-radius: var(--box-radius);
     background-color: rgb(229, 226, 226); 
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    padding: 40px 60px 60px 60px;
+    padding: 30px 60px 50px 60px;
 }
 
 input {

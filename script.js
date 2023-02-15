@@ -13,6 +13,11 @@ modalButton.addEventListener('click', () => {
 span.addEventListener('click', () => {
   modal.style.display = 'none';
 });
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
 
 function Book(title, author, pages, haveRead) {
   this.title = title;

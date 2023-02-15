@@ -38,13 +38,13 @@ ul {
     box-shadow: 0 2px 2px 0 rgb(209, 205, 205);
 }
 
-.addBookButton {
+.add-book-button {
     padding-top: 20px;
 }
 
 /* modal start */
 
-#modalButton {
+#modal-button {
     background: none;
     border: none;
     font-size: 25px;
@@ -52,7 +52,7 @@ ul {
     padding:20px;
 }
 
-#modalButton:hover {
+#modal-button:hover {
     background-color: rgb(229, 226, 226); 
     border: none;
     border-radius: var(--button-radius);
@@ -110,21 +110,21 @@ input {
     cursor: pointer;
 }
 
-#newBookForm ul {
+#new-book-form ul {
     padding: 0px;
 }
 
-#newBookForm ul li {
+#new-book-form ul li {
     padding-top: 30px;
 }
 
-.haveYouReadText {
+.have-you-read-text {
     font-size: 17px;
     font-weight: bold;
     padding-bottom: 0px;
 }
 
-#haveRead {
+#have-read {
     width:17px;
     height:17px;
     margin-left: 20px;
@@ -132,7 +132,7 @@ input {
     vertical-align: middle;
 }
 
-#submitButton {
+#submit-button {
     background-color: var(--library-green);
     padding: 20px 40px 20px 40px;
     font-size:17px;
@@ -142,7 +142,7 @@ input {
     width:233px;
 }
 
-#submitButton:hover {    
+#submit-button:hover {    
     background-color: var(--library-green-hover);
     cursor: pointer;
 }
@@ -150,7 +150,7 @@ input {
 
 /* modal end */
 
-#libraryContainer {
+#library-container {
     padding:20px 70px 20px 70px;
     display:grid;
     justify-items: center;
@@ -161,7 +161,7 @@ input {
     height:70%;
 }
 
-.myLibraryCards {
+.my-library-cards {
     display: flex;
     flex-direction: column;
     font-size: 17px;
@@ -176,7 +176,7 @@ input {
     height: 250px;
 }
 
-.myLibraryCards button {
+.my-library-cards button {
     padding: 20px;
     font-size: 17px;
     font-weight: bold;
@@ -184,7 +184,7 @@ input {
     border: none;
 }
 
-.myLibraryCards button:hover {
+.my-library-cards button:hover {
     cursor: pointer;
     opacity: 0.7;
 }

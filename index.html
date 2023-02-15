@@ -13,20 +13,20 @@
     My Library
   </div>
   <!--Trigger/Open the new book Modal-->
-  <div class="addBookButton">
-    <button id="modalButton">+ Add book</button>
+  <div class="add-book-button">
+    <button id="modal-button">+ Add book</button>
   </div>
   <!--The Modal-->
-  <div id="newBookModal" class="modal">
+  <div id="new-book-modal" class="modal">
   <!--Modal content-->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <form id="newBookForm">
-        <h2 class="formTitle">Add a book</h2>  
+      <form id="new-book-form">
+        <h2 class="form-title">Add a book</h2>  
         <ul>
           <li>
-            <label for="book_title"></label>
-            <input type="text" id="title" name="book_title" placeholder="Title" minlength="1" required />
+            <label for="book-title"></label>
+            <input type="text" id="title" name="book-title" placeholder="Title" minlength="1" required />
           </li>
           <li>
             <label for="author"> </label>
@@ -37,19 +37,19 @@
             <input type="number" id="pages" name="pages"  min="1" placeholder="Pages" required />
           </li>
           <li>
-            <label for="have_you_read"></label>
-            <p class="haveYouReadText">Have you read it? <input type="checkbox" id="haveRead" name="have_you_read" /></p> 
+            <label for="have-you-read"></label>
+            <p class="have-you-read-text">Have you read it? <input type="checkbox" id="have-read" name="have-you-read" /></p> 
           </li>
           <li class="button">
             <label for="Submit book to library"></label>
-            <button id="submitButton" type="submit"> Submit</button>
+            <button id="submit-button" type="submit"> Submit</button>
           </li>
         </ul>
       </form>
     </div>
   </div>
   <!--Modal end-->
-  <div id="libraryContainer"></div>
+  <div id="library-container"></div>
 
   <div class="footer">
     Copyright &copy; Barry Moonshine, the Odin Project

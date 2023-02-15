@@ -1,8 +1,8 @@
-const libraryContainer = document.getElementById('libraryContainer');
-const modal = document.getElementById('newBookModal');
-const modalButton = document.getElementById('modalButton');
+const libraryContainer = document.getElementById('library-container');
+const modal = document.getElementById('new-book-modal');
+const modalButton = document.getElementById('modal-button');
 const closeButton = document.getElementsByClassName('close')[0];
-const newBookForm = document.getElementById('newBookForm');
+const newBookForm = document.getElementById('new-book-form');
 const body = document.getElementById('body');
 const myLibrary = [];
 
@@ -79,7 +79,7 @@ function createLibraryCard() {
     const libraryBookPages = document.createElement('div');
     const removeBookButton = document.createElement('button');
     const haveReadButton = document.createElement('button');
-    libraryBook.className = 'myLibraryCards';
+    libraryBook.className = 'my-library-cards';
     libraryBook.id = index;
     removeBookButton.id = index;
     haveReadButton.id = `haveRead${index}`;
@@ -119,7 +119,7 @@ function resetForm() {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('pages').value = '';
-  document.getElementById('haveRead').checked = null;
+  document.getElementById('have-read').checked = null;
 }
 
 // Function called when form submitted
@@ -127,7 +127,7 @@ function addBookToLibrary() {
   const titleValue = document.getElementById('title').value;
   const authorValue = document.getElementById('author').value;
   const pagesValue = document.getElementById('pages').value;
-  const haveReadValue = document.getElementById('haveRead').checked;
+  const haveReadValue = document.getElementById('have-read').checked;
   const newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
   myLibrary.push(newBook);
 }

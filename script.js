@@ -46,31 +46,33 @@ function hideModal() {
   modal.style.display = 'none';
 }
 
-function removeButtonEventListener(removeBookButton) {
-  removeBookButton.addEventListener('click', (e) => {
-    // Removes targeted book
-    const element = document.getElementById(e.target.id);
-    const index = element.id;
-    myLibrary.splice(index, 1);
-    displayLibrary();
-  });
+libraryContainer.addEventListener('click', (e) => {
+  if (String(e.target.id).match(/^[0-9]+$/) != null) {
+    deleteBook(e);
+  } else {
+    updateReadStatus(e);
+  }
+});
+
+function deleteBook(e) {
+  const element = document.getElementById(e.target.id);
+  const index = element.id;
+  myLibrary.splice(index, 1);
+  displayLibrary();
 }
 
-function haveReadButtonEventListener(haveReadButton) {
-  haveReadButton.addEventListener('click', (e) => {
-    // Changes have read status of targeted book
-    const haveReadButtonValue = document.getElementById(e.target.id).textContent;
-    const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
-    if (haveReadButtonValue == 'Read') {
-      haveReadButton.style.backgroundColor = '#f87171';
-      haveReadButton.innerText = 'Not read';
-      myLibrary[myLibraryArrayIndex].haveRead = false;
-    } else if (haveReadButtonValue == 'Not read') {
-      haveReadButton.style.backgroundColor = '#4ade80';
-      haveReadButton.innerText = 'Read';
-      myLibrary[myLibraryArrayIndex].haveRead = true;
-    }
-  });
+function updateReadStatus(e) {
+  const haveReadButton = document.getElementById(e.target.id);
+  const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
+  if (haveReadButton.textContent === 'Read') {
+    haveReadButton.style.backgroundColor = '#f87171';
+    haveReadButton.innerText = 'Not read';
+    myLibrary[myLibraryArrayIndex].haveRead = false;
+  } else if (haveReadButton.textContent === 'Not read') {
+    haveReadButton.style.backgroundColor = '#4ade80';
+    haveReadButton.innerText = 'Read';
+    myLibrary[myLibraryArrayIndex].haveRead = true;
+  }
 }
 
 function createLibraryCard() {
@@ -100,10 +102,6 @@ function createLibraryCard() {
     // Append elements
     libraryBook.append(haveReadButton, removeBookButton);
     libraryContainer.appendChild(libraryBook);
-
-    // Add event listeners
-    removeButtonEventListener(removeBookButton);
-    haveReadButtonEventListener(haveReadButton);
   });
 }
 

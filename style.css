@@ -20,7 +20,7 @@ body {
     min-height: 100vh;
     grid-template-rows: 100px 1fr 7fr 1fr;
     background-color: var(--main-background-color);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Heebo', sans-serif;
     text-align: center; 
 }
 
@@ -82,7 +82,7 @@ ul {
     border-radius: var(--box-radius);
     background-color: rgb(229, 226, 226); 
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    padding: 30px 45px 50px 45px;
+    padding: 30px 50px 50px 50px;
 }
 
 input {
@@ -173,7 +173,7 @@ input {
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     padding: 20px;
     width: 300px;
-    height: 250px;
+    height: 300px;
 }
 
 .my-library-cards button {

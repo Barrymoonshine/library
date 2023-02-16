@@ -1,7 +1,7 @@
 const libraryContainer = document.getElementById('library-container');
 const modal = document.getElementById('new-book-modal');
 const modalButton = document.getElementById('modal-button');
-const closeButton = document.getElementsByClassName('close')[0];
+const closeModalButton = document.getElementsByClassName('close')[0];
 const newBookForm = document.getElementById('new-book-form');
 const body = document.getElementById('body');
 const myLibrary = [];
@@ -11,7 +11,7 @@ modalButton.addEventListener('click', () => {
   modal.style.display = 'flex';
   body.style.backgroundColor = 'rgba (0,0,0,0.4)';
 });
-closeButton.addEventListener('click', () => {
+closeModalButton.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 window.addEventListener('click', (e) => {
@@ -118,7 +118,6 @@ function resetForm() {
   document.getElementById('have-read').checked = false;
 }
 
-// Function called when form submitted
 function addBookToLibrary() {
   const titleValue = document.getElementById('title').value;
   const authorValue = document.getElementById('author').value;

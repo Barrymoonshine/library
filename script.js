@@ -35,6 +35,7 @@ function displayLibrary() {
   removeDivs();
   hideModal();
   createLibraryCard();
+  styleHaveReadButton();
 }
 
 function resetForm() {
@@ -55,21 +56,24 @@ function hideModal() {
 }
 
 function createLibraryCard() {
+  // Creates library card content
   myLibrary.forEach((item, index) => {
-    // Create elements to append onto the library container
-    const libraryBook = document.createElement('div');
-    const removeBookButton = document.createElement('button');
-    const haveReadButton = document.createElement('button');
-    libraryBook.className = 'my-library-cards';
-    libraryBook.id = index;
-    removeBookButton.id = index;
-    haveReadButton.id = `haveRead${index}`;
+    libraryContainer.innerHTML += String.raw`
+    <div class='my-library-cards' id='${index}'>
+      <div>
+        <p>Title: ${item.title}</p> <br>
+        <p>Author: ${item.author}</p> <br>
+        <p>Number of pages: ${item.pages}</p> 
+      </div>
+      <button id='haveRead${index}'>${item.haveRead}</button>
+      <button id='${index}'>Remove book</button>
+    </div>`;
+  });
+}
 
-    // Create content for the elements
-    libraryBook.innerText = `Title: ${item.title} \n 
-    Author: ${item.author} \n
-    Number of pages: ${item.pages}`;
-    removeBookButton.innerText = 'Remove book';
+function styleHaveReadButton() {
+  myLibrary.forEach((item, index) => {
+    const haveReadButton = document.getElementById(`haveRead${index}`);
     if (item.haveRead === true) {
       haveReadButton.style.backgroundColor = '#4ade80';
       haveReadButton.innerText = 'Read';
@@ -77,22 +81,21 @@ function createLibraryCard() {
       haveReadButton.style.backgroundColor = '#f87171';
       haveReadButton.innerText = 'Not read';
     }
-
-    // Append elements
-    libraryBook.append(haveReadButton, removeBookButton);
-    libraryContainer.appendChild(libraryBook);
   });
 }
 
 libraryContainer.addEventListener('click', (e) => {
+  // Checks if the target id only contains numbers and is therefore the delete button
   if (String(e.target.id).match(/^[0-9]+$/) != null) {
     deleteBook(e);
+    // Else the user has selected the read status button
   } else {
     updateReadStatus(e);
   }
 });
 
 function deleteBook(e) {
+  // Deletes the selected book from the array and returns a new array
   const element = document.getElementById(e.target.id);
   const index = element.id;
   myLibrary.splice(index, 1);

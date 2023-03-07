@@ -4,14 +4,64 @@ const modalButton = document.getElementById('modal-button');
 const closeModalButton = document.getElementsByClassName('close')[0];
 const newBookForm = document.getElementById('new-book-form');
 const body = document.getElementById('body');
-const myLibrary = [];
 
-class Book {
-  constructor(title, author, pages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.haveRead = haveRead;
+class LibraryController {
+  constructor(element) {
+    this.libraryContainer = element;
+    this.myLibrary = [
+      {
+        title: 'The Hobbit',
+        author: 'J R R Tolkien',
+        pages: '300',
+        haveRead: true,
+      },
+    ];
+  }
+
+  createLibrary() {
+    // Remove all previous books and adds all previous books plus new book
+    while (this.libraryContainer.firstChild) {
+      this.libraryContainer.removeChild(this.libraryContainer.firstChild);
+    }
+
+    this.myLibrary.forEach((item, index) => {
+      libraryContainer.innerHTML += String.raw`
+      <div class='my-library-cards' id='${index}'>
+        <div>
+          <p>Title: ${item.title}</p> <br>
+          <p>Author: ${item.author}</p> <br>
+          <p>Number of pages: ${item.pages}</p> 
+        </div>
+        <button id='haveRead${index}'>${item.haveRead}</button>
+        <button id='${index}'>Remove book</button>
+      </div>`;
+    });
+  }
+}
+
+const library = new LibraryController(libraryContainer);
+
+library.createLibrary();
+
+function deleteBook(e) {
+  // Deletes the selected book from the array and returns a new array
+  const element = document.getElementById(e.target.id);
+  const index = element.id;
+  myLibrary.splice(index, 1);
+  displayLibrary();
+}
+
+function updateReadStatus(e) {
+  const haveReadButton = document.getElementById(e.target.id);
+  const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
+  if (haveReadButton.textContent === 'Read') {
+    haveReadButton.style.backgroundColor = '#f87171';
+    haveReadButton.innerText = 'Not read';
+    myLibrary[myLibraryArrayIndex].haveRead = false;
+  } else if (haveReadButton.textContent === 'Not read') {
+    haveReadButton.style.backgroundColor = '#4ade80';
+    haveReadButton.innerText = 'Read';
+    myLibrary[myLibraryArrayIndex].haveRead = true;
   }
 }
 
@@ -92,31 +142,9 @@ libraryContainer.addEventListener('click', (e) => {
     deleteBook(e);
     // Else the user has selected the read status button
   } else {
-    updateReadStatus(e);
+    myLibrary.getValue();
   }
 });
-
-function deleteBook(e) {
-  // Deletes the selected book from the array and returns a new array
-  const element = document.getElementById(e.target.id);
-  const index = element.id;
-  myLibrary.splice(index, 1);
-  displayLibrary();
-}
-
-function updateReadStatus(e) {
-  const haveReadButton = document.getElementById(e.target.id);
-  const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
-  if (haveReadButton.textContent === 'Read') {
-    haveReadButton.style.backgroundColor = '#f87171';
-    haveReadButton.innerText = 'Not read';
-    myLibrary[myLibraryArrayIndex].haveRead = false;
-  } else if (haveReadButton.textContent === 'Not read') {
-    haveReadButton.style.backgroundColor = '#4ade80';
-    haveReadButton.innerText = 'Read';
-    myLibrary[myLibraryArrayIndex].haveRead = true;
-  }
-}
 
 // Modal event listeners
 modalButton.addEventListener('click', () => {

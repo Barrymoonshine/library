@@ -6,11 +6,13 @@ const newBookForm = document.getElementById('new-book-form');
 const body = document.getElementById('body');
 const myLibrary = [];
 
-function Book(title, author, pages, haveRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.haveRead = haveRead;
+class Book {
+  constructor(title, author, pages, haveRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.haveRead = haveRead;
+  }
 }
 
 newBookForm.addEventListener('submit', handleForm);

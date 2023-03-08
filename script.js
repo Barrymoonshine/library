@@ -5,6 +5,15 @@ const closeModalButton = document.getElementsByClassName('close')[0];
 const newBookForm = document.getElementById('new-book-form');
 const body = document.getElementById('body');
 
+class NewBook {
+  constructor(title, author, pages, haveRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.haveRead = haveRead;
+  }
+}
+
 class LibraryController {
   constructor(element) {
     this.libraryContainer = element;
@@ -37,6 +46,8 @@ class LibraryController {
       </div>`;
     });
   }
+
+  addNewBook(titleValue, authorValue, pagesValue, haveReadValue) {}
 }
 
 const library = new LibraryController(libraryContainer);

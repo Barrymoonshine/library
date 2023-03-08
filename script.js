@@ -28,7 +28,7 @@ class LibraryController {
   }
 
   createLibrary() {
-    // Remove all previous books and adds all previous books plus new book
+    // Removes all previous books and adds all previous books plus new book
     while (this.libraryContainer.firstChild) {
       this.libraryContainer.removeChild(this.libraryContainer.firstChild);
     }
@@ -47,6 +47,19 @@ class LibraryController {
     });
   }
 
+  styleHaveReadButton() {
+    this.myLibrary.forEach((item, index) => {
+      const haveReadButton = document.getElementById(`haveRead${index}`);
+      if (item.haveRead === true) {
+        haveReadButton.style.backgroundColor = '#4ade80';
+        haveReadButton.innerText = 'Read';
+      } else if (item.haveRead === false) {
+        haveReadButton.style.backgroundColor = '#f87171';
+        haveReadButton.innerText = 'Not read';
+      }
+    });
+  }
+
   addNewBook() {
     const titleValue = document.getElementById('title').value;
     const authorValue = document.getElementById('author').value;
@@ -59,6 +72,13 @@ class LibraryController {
       haveReadValue
     );
     this.myLibrary.push(newBook);
+  }
+
+  resetForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('have-read').checked = false;
   }
 }
 
@@ -94,9 +114,11 @@ function handleForm(e) {
   e.preventDefault();
   library.addNewBook();
   library.createLibrary();
-  resetForm();
+  library.styleHaveReadButton();
+  library.resetForm();
 }
 
+// Moved to Library Controller
 // function addBookToLibrary() {
 //   const titleValue = document.getElementById('title').value;
 //   const authorValue = document.getElementById('author').value;
@@ -106,58 +128,64 @@ function handleForm(e) {
 //   myLibrary.push(newBook);
 // }
 
-function displayLibrary() {
-  removeDivs();
-  hideModal();
-  createLibraryCard();
-  styleHaveReadButton();
-}
+// No longer needed as handled by Library Controller
+// function displayLibrary() {
+//   removeDivs();
+//   hideModal();
+//   createLibraryCard();
+//   styleHaveReadButton();
+// }
 
-function resetForm() {
-  document.getElementById('title').value = '';
-  document.getElementById('author').value = '';
-  document.getElementById('pages').value = '';
-  document.getElementById('have-read').checked = false;
-}
+// Moved to Library Controller
+// function resetForm() {
+//   document.getElementById('title').value = '';
+//   document.getElementById('author').value = '';
+//   document.getElementById('pages').value = '';
+//   document.getElementById('have-read').checked = false;
+// }
 
-function removeDivs() {
-  while (libraryContainer.lastElementChild) {
-    libraryContainer.removeChild(libraryContainer.lastElementChild);
-  }
-}
+// Moved to Library Controller
+// function removeDivs() {
+//   while (libraryContainer.lastElementChild) {
+//     libraryContainer.removeChild(libraryContainer.lastElementChild);
+//   }
+// }
 
-function hideModal() {
-  modal.style.display = 'none';
-}
+// No longer needed
+// function hideModal() {
+//   modal.style.display = 'none';
+// }
 
-function createLibraryCard() {
-  // Creates library card content
-  myLibrary.forEach((item, index) => {
-    libraryContainer.innerHTML += String.raw`
-    <div class='my-library-cards' id='${index}'>
-      <div>
-        <p>Title: ${item.title}</p> <br>
-        <p>Author: ${item.author}</p> <br>
-        <p>Number of pages: ${item.pages}</p> 
-      </div>
-      <button id='haveRead${index}'>${item.haveRead}</button>
-      <button id='${index}'>Remove book</button>
-    </div>`;
-  });
-}
+// Moved to Library Controller
+// function createLibraryCard() {
+//   // Creates library card content
+//   myLibrary.forEach((item, index) => {
+//     libraryContainer.innerHTML += String.raw`
+//     <div class='my-library-cards' id='${index}'>
+//       <div>
+//         <p>Title: ${item.title}</p> <br>
+//         <p>Author: ${item.author}</p> <br>
+//         <p>Number of pages: ${item.pages}</p>
+//       </div>
+//       <button id='haveRead${index}'>${item.haveRead}</button>
+//       <button id='${index}'>Remove book</button>
+//     </div>`;
+//   });
+// }
 
-function styleHaveReadButton() {
-  myLibrary.forEach((item, index) => {
-    const haveReadButton = document.getElementById(`haveRead${index}`);
-    if (item.haveRead === true) {
-      haveReadButton.style.backgroundColor = '#4ade80';
-      haveReadButton.innerText = 'Read';
-    } else if (item.haveRead === false) {
-      haveReadButton.style.backgroundColor = '#f87171';
-      haveReadButton.innerText = 'Not read';
-    }
-  });
-}
+// Moved to Library Controller
+// function styleHaveReadButton() {
+//   myLibrary.forEach((item, index) => {
+//     const haveReadButton = document.getElementById(`haveRead${index}`);
+//     if (item.haveRead === true) {
+//       haveReadButton.style.backgroundColor = '#4ade80';
+//       haveReadButton.innerText = 'Read';
+//     } else if (item.haveRead === false) {
+//       haveReadButton.style.backgroundColor = '#f87171';
+//       haveReadButton.innerText = 'Not read';
+//     }
+//   });
+// }
 
 libraryContainer.addEventListener('click', (e) => {
   // Checks if the target id only contains numbers and is therefore the delete button

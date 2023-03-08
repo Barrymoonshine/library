@@ -14,21 +14,14 @@ class Book {
   }
 }
 
-class LibraryController {
+class Library {
   constructor(element) {
     this.libraryContainer = element;
-    this.myLibrary = [
-      {
-        title: 'The Hobbit',
-        author: 'J R R Tolkien',
-        pages: '300',
-        haveRead: true,
-      },
-    ];
+    this.myLibrary = [];
   }
 
   createLibrary() {
-    // Removes all previous books and adds all previous books plus new book
+    // Removes all previous books and them back plus new book
     while (this.libraryContainer.firstChild) {
       this.libraryContainer.removeChild(this.libraryContainer.firstChild);
     }
@@ -80,19 +73,34 @@ class LibraryController {
     document.getElementById('pages').value = '';
     document.getElementById('have-read').checked = false;
   }
+
+  deleteBook(e) {
+    //Deletes the selected book from the array and returns a new array
+    const element = document.getElementById(e.target.id);
+    const index = element.id;
+    this.myLibrary.splice(index, 1);
+    this.createLibrary();
+  }
 }
 
-const library = new LibraryController(libraryContainer);
+const libraryController = new Library(libraryContainer);
 
-library.createLibrary();
-
-function deleteBook(e) {
-  // Deletes the selected book from the array and returns a new array
-  const element = document.getElementById(e.target.id);
-  const index = element.id;
-  myLibrary.splice(index, 1);
-  displayLibrary();
+class Display {
+  hideModal() {
+    modal.style.display = 'none';
+  }
 }
+
+const displayController = new Display();
+
+// Moved to Library Class
+// function deleteBook(e) {
+//   // Deletes the selected book from the array and returns a new array
+//   const element = document.getElementById(e.target.id);
+//   const index = element.id;
+//   myLibrary.splice(index, 1);
+//   displayLibrary();
+// }
 
 function updateReadStatus(e) {
   const haveReadButton = document.getElementById(e.target.id);
@@ -108,17 +116,27 @@ function updateReadStatus(e) {
   }
 }
 
-newBookForm.addEventListener('submit', handleForm);
+libraryContainer.addEventListener('click', (e) => {
+  // Checks if the target id only contains numbers and is therefore the delete button
+  if (String(e.target.id).match(/^[0-9]+$/) != null) {
+    libraryController.deleteBook(e);
+    // Else the user has selected the read status button
+  } else {
+    myLibrary.getValue();
+  }
+});
 
 function handleForm(e) {
   e.preventDefault();
-  library.addNewBook();
-  library.createLibrary();
-  library.styleHaveReadButton();
-  library.resetForm();
+  libraryController.addNewBook();
+  libraryController.createLibrary();
+  libraryController.styleHaveReadButton();
+  libraryController.resetForm();
+  displayController.hideModal();
 }
+newBookForm.addEventListener('submit', handleForm);
 
-// Moved to Library Controller
+// Moved to Library class
 // function addBookToLibrary() {
 //   const titleValue = document.getElementById('title').value;
 //   const authorValue = document.getElementById('author').value;
@@ -128,7 +146,7 @@ function handleForm(e) {
 //   myLibrary.push(newBook);
 // }
 
-// No longer needed as handled by Library Controller
+// No longer needed as handled by Library class
 // function displayLibrary() {
 //   removeDivs();
 //   hideModal();
@@ -136,7 +154,7 @@ function handleForm(e) {
 //   styleHaveReadButton();
 // }
 
-// Moved to Library Controller
+// Moved to Library class
 // function resetForm() {
 //   document.getElementById('title').value = '';
 //   document.getElementById('author').value = '';
@@ -144,7 +162,7 @@ function handleForm(e) {
 //   document.getElementById('have-read').checked = false;
 // }
 
-// Moved to Library Controller
+// Moved to Library class
 // function removeDivs() {
 //   while (libraryContainer.lastElementChild) {
 //     libraryContainer.removeChild(libraryContainer.lastElementChild);
@@ -156,7 +174,7 @@ function handleForm(e) {
 //   modal.style.display = 'none';
 // }
 
-// Moved to Library Controller
+// Moved to Library class
 // function createLibraryCard() {
 //   // Creates library card content
 //   myLibrary.forEach((item, index) => {
@@ -173,7 +191,7 @@ function handleForm(e) {
 //   });
 // }
 
-// Moved to Library Controller
+// Moved to Library class
 // function styleHaveReadButton() {
 //   myLibrary.forEach((item, index) => {
 //     const haveReadButton = document.getElementById(`haveRead${index}`);
@@ -186,16 +204,6 @@ function handleForm(e) {
 //     }
 //   });
 // }
-
-libraryContainer.addEventListener('click', (e) => {
-  // Checks if the target id only contains numbers and is therefore the delete button
-  if (String(e.target.id).match(/^[0-9]+$/) != null) {
-    deleteBook(e);
-    // Else the user has selected the read status button
-  } else {
-    myLibrary.getValue();
-  }
-});
 
 // Modal event listeners
 modalButton.addEventListener('click', () => {

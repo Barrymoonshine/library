@@ -5,7 +5,7 @@ const closeModalButton = document.getElementsByClassName('close')[0];
 const newBookForm = document.getElementById('new-book-form');
 const body = document.getElementById('body');
 
-class NewBook {
+class Book {
   constructor(title, author, pages, haveRead) {
     this.title = title;
     this.author = author;
@@ -47,7 +47,19 @@ class LibraryController {
     });
   }
 
-  addNewBook(titleValue, authorValue, pagesValue, haveReadValue) {}
+  addNewBook() {
+    const titleValue = document.getElementById('title').value;
+    const authorValue = document.getElementById('author').value;
+    const pagesValue = document.getElementById('pages').value;
+    const haveReadValue = document.getElementById('have-read').checked;
+    const newBook = new Book(
+      titleValue,
+      authorValue,
+      pagesValue,
+      haveReadValue
+    );
+    this.myLibrary.push(newBook);
+  }
 }
 
 const library = new LibraryController(libraryContainer);
@@ -80,19 +92,19 @@ newBookForm.addEventListener('submit', handleForm);
 
 function handleForm(e) {
   e.preventDefault();
-  addBookToLibrary();
-  displayLibrary();
+  library.addNewBook();
+  library.createLibrary();
   resetForm();
 }
 
-function addBookToLibrary() {
-  const titleValue = document.getElementById('title').value;
-  const authorValue = document.getElementById('author').value;
-  const pagesValue = document.getElementById('pages').value;
-  const haveReadValue = document.getElementById('have-read').checked;
-  const newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
-  myLibrary.push(newBook);
-}
+// function addBookToLibrary() {
+//   const titleValue = document.getElementById('title').value;
+//   const authorValue = document.getElementById('author').value;
+//   const pagesValue = document.getElementById('pages').value;
+//   const haveReadValue = document.getElementById('have-read').checked;
+//   const newBook = new Book(titleValue, authorValue, pagesValue, haveReadValue);
+//   myLibrary.push(newBook);
+// }
 
 function displayLibrary() {
   removeDivs();

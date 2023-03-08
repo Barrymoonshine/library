@@ -82,6 +82,20 @@ class Library {
     this.createLibrary();
     this.styleHaveReadButton();
   }
+
+  updateReadStatus(e) {
+    const haveReadButton = document.getElementById(e.target.id);
+    const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
+    if (haveReadButton.textContent === 'Read') {
+      haveReadButton.style.backgroundColor = '#f87171';
+      haveReadButton.innerText = 'Not read';
+      this.myLibrary[myLibraryArrayIndex].haveRead = false;
+    } else if (haveReadButton.textContent === 'Not read') {
+      haveReadButton.style.backgroundColor = '#4ade80';
+      haveReadButton.innerText = 'Read';
+      this.myLibrary[myLibraryArrayIndex].haveRead = true;
+    }
+  }
 }
 
 const libraryController = new Library(libraryContainer);
@@ -103,19 +117,20 @@ const displayController = new Display();
 //   displayLibrary();
 // }
 
-function updateReadStatus(e) {
-  const haveReadButton = document.getElementById(e.target.id);
-  const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
-  if (haveReadButton.textContent === 'Read') {
-    haveReadButton.style.backgroundColor = '#f87171';
-    haveReadButton.innerText = 'Not read';
-    myLibrary[myLibraryArrayIndex].haveRead = false;
-  } else if (haveReadButton.textContent === 'Not read') {
-    haveReadButton.style.backgroundColor = '#4ade80';
-    haveReadButton.innerText = 'Read';
-    myLibrary[myLibraryArrayIndex].haveRead = true;
-  }
-}
+// Moved to Library Class
+// function updateReadStatus(e) {
+//   const haveReadButton = document.getElementById(e.target.id);
+//   const myLibraryArrayIndex = e.target.id.replace('haveRead', '');
+//   if (haveReadButton.textContent === 'Read') {
+//     haveReadButton.style.backgroundColor = '#f87171';
+//     haveReadButton.innerText = 'Not read';
+//     myLibrary[myLibraryArrayIndex].haveRead = false;
+//   } else if (haveReadButton.textContent === 'Not read') {
+//     haveReadButton.style.backgroundColor = '#4ade80';
+//     haveReadButton.innerText = 'Read';
+//     myLibrary[myLibraryArrayIndex].haveRead = true;
+//   }
+// }
 
 libraryContainer.addEventListener('click', (e) => {
   // Checks if the target id only contains numbers and is therefore the delete button
@@ -123,7 +138,7 @@ libraryContainer.addEventListener('click', (e) => {
     libraryController.deleteBook(e);
     // Else the user has selected the read status button
   } else {
-    myLibrary.getValue();
+    libraryController.updateReadStatus(e);
   }
 });
 

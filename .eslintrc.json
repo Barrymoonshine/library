@@ -9,5 +9,5 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "rules": { "max-classes-per-file": ["error", { "ignoreExpressions": false }] }
+  "rules": { "max-classes-per-file": false }
 }

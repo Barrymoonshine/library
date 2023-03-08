@@ -80,6 +80,7 @@ class Library {
     const index = element.id;
     this.myLibrary.splice(index, 1);
     this.createLibrary();
+    this.styleHaveReadButton();
   }
 }
 
@@ -169,7 +170,7 @@ newBookForm.addEventListener('submit', handleForm);
 //   }
 // }
 
-// No longer needed
+// Moved to display class
 // function hideModal() {
 //   modal.style.display = 'none';
 // }

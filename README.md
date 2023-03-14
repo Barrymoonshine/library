@@ -22,7 +22,7 @@ Completed as part of [The Odin Project](https://theodinproject.com) Full Stack J
 
 ## Library project revisited
 
-- Enter summary of key learning points when refactoring code to use classes
+- As part of the Classes lesson, this project has been revisted and refactored to use classes rather than object constructors to create objects and organise code. 
 
 ## Key further learning
 
